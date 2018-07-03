@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+
 
 [System.Serializable]
 public class AxleInfo {
@@ -10,13 +12,16 @@ public class AxleInfo {
 	public bool steering;
 }
 
-public class CarController : MonoBehaviour {
+public class CarController : NetworkBehaviour {
 	public List<AxleInfo> axleInfos; 
 	public float maxMotorTorque;
 	public float maxSteeringAngle;
 
 	public void FixedUpdate()
 	{
+        if (!isLocalPlayer)
+            return;
+        
 		float motor = maxMotorTorque * -Input.GetAxis("Vertical");
 		float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
