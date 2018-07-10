@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1295973373}
   - component: {fileID: 1295973372}
-  - component: {fileID: 1295973374}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -138,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295973371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -822479833, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 67e5e3ea6393f1543a226f3000754ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
@@ -150,7 +149,7 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 144276, guid: fa894658c0c65434ead4031d2a0c96f2, type: 2}
+  m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
@@ -211,6 +210,8 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+  car1: {fileID: 1701575385187896, guid: de6b487b64c1c1740a8e4ee565ab969d, type: 2}
+  car2: {fileID: 144276, guid: fa894658c0c65434ead4031d2a0c96f2, type: 2}
 --- !u!4 &1295973373
 Transform:
   m_ObjectHideFlags: 0
@@ -224,21 +225,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1295973374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1295973371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 227461547, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  showGUI: 1
-  offsetX: 17
-  offsetY: 7
 --- !u!1001 &1427342556
 Prefab:
   m_ObjectHideFlags: 0

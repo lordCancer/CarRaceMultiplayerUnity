@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 808fa83c6883ccd4fb9ccec4ba3b4dbf
   - enabled: 1
+    path: Assets/Scenes/Car Select.unity
+    guid: 5dbf034f7795e6344b5cda0fa14206c8
+  - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: 113f72dcb05e28844a3ed8043e7a81af
   m_configObjects: {}
