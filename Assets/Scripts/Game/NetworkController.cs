@@ -5,12 +5,19 @@ using UnityEngine.Networking;
 
 namespace Duge
 {
+	[System.Serializable]
+	public class CarDetail
+	{
+		public GameObject carPrefab;
+		public Material[]   carMaterial;
+	}
+	
 	public class NetworkController : NetworkManager 
 	{
 		PlayerStatus status = GameManager.playerStatus;
 		CarList chosenCar = GameManager.chosenCar;
 		
-		public GameObject car1, car2;
+		public List<CarDetail> carDetail;
 	
 	// Use this for initialization
 		void Start () {
@@ -37,11 +44,11 @@ namespace Duge
 		  	switch(chosenCar)
 			{
 				case CarList.car1:
-					playerPrefab = car1;
+		  			playerPrefab = carDetail[0].carPrefab;
 					break;
 				
 				case CarList.car2:
-					playerPrefab = car2;
+					playerPrefab = carDetail[0].carPrefab;
 					break;
 				
 				case CarList.nill:

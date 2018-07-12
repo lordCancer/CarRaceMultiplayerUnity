@@ -210,8 +210,11 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  car1: {fileID: 1701575385187896, guid: de6b487b64c1c1740a8e4ee565ab969d, type: 2}
-  car2: {fileID: 144276, guid: fa894658c0c65434ead4031d2a0c96f2, type: 2}
+  carDetail:
+  - carPrefab: {fileID: 144276, guid: fa894658c0c65434ead4031d2a0c96f2, type: 2}
+    carMaterial:
+    - {fileID: 2100000, guid: 3da1e188d3a3fbb44826e46042dcaf0b, type: 2}
+    - {fileID: 2100000, guid: d95d603ffb384104bbd6717096bef616, type: 2}
 --- !u!4 &1295973373
 Transform:
   m_ObjectHideFlags: 0
