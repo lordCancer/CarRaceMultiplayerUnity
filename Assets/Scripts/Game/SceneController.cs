@@ -31,7 +31,7 @@ namespace Duge
         
         public void ChooseCar2()
         {
-        	GameManager.chosenCar = CarList.car2;
+        	GameManager.chosenCar = CarList.car1;
         	SceneManager.LoadScene("GamePlay");
         }        
         
