@@ -22,7 +22,9 @@ namespace Duge
         public GameObject localCamera;
         public Material redMat;
         public Material blackMat;
-        private NetworkIdentity objId;
+        [SyncVar] private Material material;
+        [SyncVar] private GameObject objectID;
+        private NetworkIdentity objNetId;
 
         private void Start()
         {
@@ -32,6 +34,13 @@ namespace Duge
                 return;
             }
             Camera.main.gameObject.SetActive(false);
+            if(FindObjectOfType<NetworkController>().CarType==CarType.red)
+            {
+                material = redMat;
+            }else if(FindObjectOfType<NetworkController>().CarType == CarType.black)
+            {
+                material = blackMat;
+            }
             CmdChangeMaterial();
         }
 
@@ -82,24 +91,16 @@ namespace Duge
         [Command]
         private void CmdChangeMaterial()
         {
-            objId = GetComponent<NetworkIdentity>();
-            //objId.AssignClientAuthority(connectionToClient);
+            objNetId = GetComponent<NetworkIdentity>();
+            objNetId.AssignClientAuthority(connectionToClient);
             RpcChangeMaterial();
-            //objId.RemoveClientAuthority(connectionToClient);
+            objNetId.RemoveClientAuthority(connectionToClient);
         }
 
         [ClientRpc]
         private void RpcChangeMaterial()
         {
-            switch(FindObjectOfType<NetworkController>().CarType)
-            {
-                case CarType.red:
-                    transform.GetChild(0).GetComponent<Renderer>().material.color = redMat.color;
-                    break;
-                case CarType.black:
-                    transform.GetChild(0).GetComponent<Renderer>().material.color = blackMat.color;
-                    break;
-            }
+            transform.GetChild(0).GetComponent<Renderer>().material = material;
         }
     }
 }
