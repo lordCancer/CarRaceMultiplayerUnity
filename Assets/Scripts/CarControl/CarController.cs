@@ -19,6 +19,21 @@ namespace Duge
         public List<AxleInfo> axleInfos;
         public float maxMotorTorque;
         public float maxSteeringAngle;
+        public GameObject localCamera;
+        public Material redMat;
+        public Material blackMat;
+        private NetworkIdentity objId;
+
+        private void Start()
+        {
+            if (!isLocalPlayer)
+            {
+                localCamera.SetActive(false);
+                return;
+            }
+            Camera.main.gameObject.SetActive(false);
+            CmdChangeMaterial();
+        }
 
         private void FixedUpdate()
         {
@@ -62,6 +77,29 @@ namespace Duge
 
             visualWheel.transform.position = position;
             visualWheel.transform.rotation = rotation;
+        }
+
+        [Command]
+        private void CmdChangeMaterial()
+        {
+            objId = GetComponent<NetworkIdentity>();
+            //objId.AssignClientAuthority(connectionToClient);
+            RpcChangeMaterial();
+            //objId.RemoveClientAuthority(connectionToClient);
+        }
+
+        [ClientRpc]
+        private void RpcChangeMaterial()
+        {
+            switch(FindObjectOfType<NetworkController>().CarType)
+            {
+                case CarType.red:
+                    transform.GetChild(0).GetComponent<Renderer>().material.color = redMat.color;
+                    break;
+                case CarType.black:
+                    transform.GetChild(0).GetComponent<Renderer>().material.color = blackMat.color;
+                    break;
+            }
         }
     }
 }
